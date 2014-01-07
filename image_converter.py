@@ -2,10 +2,13 @@
 """
 Created on Tue Jan  7 14:13:07 2014
 
+Used to convert images to a specific file type since some formats like gif are
+not great for standard viewing on windows. Uses python Pillow package.
+
 @author: Kieran Bristow
 """
 import glob
-
+import log
 from PIL import Image
 
 def convertImage(sourceFile, newExtension):
@@ -16,7 +19,7 @@ def convertImage(sourceFile, newExtension):
         newImage.paste(im)
         newImage.save(outputFile)
     except IOError:
-        print("Cannot convert", sourceFile)
+        log.error("Cannot convert", sourceFile)
 
 ootsGlob = "./Comics/OrderOfTheStick/*.gif"
 smbcGlob = "./Comics/SMBC/*.gif"

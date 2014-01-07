@@ -2,10 +2,14 @@
 """
 Created on Tue Jan  7 13:34:07 2014
 
-@author: Kieran
+Stores configurations of the ComicMiner object for specific web comics.
+
+@author: Kieran Bristow
 """
 
 from comic_miner import ComicMiner 
+
+#NOTE TO SELF: Get better at regex's
 
 class Oglaf(ComicMiner): 
     #The base url for the oglaf website
