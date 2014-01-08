@@ -12,7 +12,7 @@ import log
 import configurations as configs
 
 #All this information is used for debugging
-isDebug = True
+isDebug = False
 isTest = False
 maxComics = 10
 
