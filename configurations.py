@@ -11,6 +11,48 @@ from comic_miner import ComicMiner
 
 #NOTE TO SELF: Get better at regex's
 
+class Dorkly(ComicMiner):
+    #The app works very poorly for this comic strip because it uses an odd format
+
+    #The base url for the PDL website
+    BaseUrl = 'http://www.dorkly.com/'    
+    
+    #Not actually the first comic but something weird happens with the ones before this.
+    StartUrl = 'comic/10575/dueling-analogs-stroke-of-genius'
+    
+    #The comics name
+    ComicName = 'Dorkly'
+    
+    #Next comic regex
+    NextComicRegex = r'(?=(<a href="/((comic)?(article)?/.*?)".*?title="Previous article"))'
+    
+    #Image regex
+    ComicImageRegex = r'"og:image" content="(.*?)">'
+    
+    #Dorkly has full link to the image
+    RelativeImages = False
+    
+
+class LoldWell(ComicMiner):
+    #The base url for the PDL website
+    BaseUrl = 'http://loldwell.com/'    
+    
+    #First Comic
+    StartUrl = '?comic=stick-figures'
+    
+    #The comics name
+    ComicName = 'LoldWell'
+    
+    #Next comic regex
+    NextComicRegex = r'(?=(rel="next" href="http://loldwell.com/(\?comic=.*?)"))'
+    
+    #Image regex
+    ComicImageRegex = r'"og:description".*?\n.*?"og:image" content="(.*?)"'
+    
+    #LoldWell has full link to the image
+    RelativeImages = False
+    
+
 class Oglaf(ComicMiner): 
     #The base url for the oglaf website
     BaseUrl = 'http://oglaf.com/'
@@ -52,6 +94,24 @@ class OrderOfTheStick(ComicMiner):
     #OOTS directs to a # at the latest comic
     EndUrl = "#"
 
+class PoorlyDrawnLines(ComicMiner):
+    #The base url for the PDL website
+    BaseUrl = 'http://poorlydrawnlines.com/'
+    
+    #The first PDL comic
+    StartUrl = 'comic/campus-characters/'
+    
+    #The comics name
+    ComicName = 'PoorlyDrawnLines'
+    
+    #Next comic regex
+    NextComicRegex = r'(?=("http://poorlydrawnlines\.com/(comic/.*?)" rel="next">))'
+    
+    #Image regex
+    ComicImageRegex = r'src="(http://poorlydrawnlines\.com/wp-content/uploads/.*?)"'
+    
+    #PDL has full link to the image
+    RelativeImages = False
 
 class SMBC(ComicMiner):
     #The base url for the SMBC website
@@ -67,7 +127,7 @@ class SMBC(ComicMiner):
     NextComicRegex = r'(?=(<a href="(\?id=.*?#comic)" title="" class="nextRollover"></a>))'
 
     #Image regex
-    ComicImageRegex = r'<img src=\'(http://www.smbc-comics.com/comics/.*?)\'>'
+    ComicImageRegex = r'<img src=\'(http://www\.smbc-comics\.com/comics/.*?)\'>'
     
     #SMBC hosts images on its site but provides the full url
     RelativeImages = False
@@ -86,7 +146,7 @@ class XKCD(ComicMiner):
     NextComicRegex = r'(?=(rel="next" href="/(.*?)"))'
 
     #Image regex
-    ComicImageRegex = r'<img src="(http://imgs.xkcd.com/comics/.*?)"'
+    ComicImageRegex = r'<img src="(http://imgs\.xkcd\.com/comics/.*?)"'
     
     #XKCD hosts images on another site
     RelativeImages = False
